@@ -1,34 +1,32 @@
 const PhoneFactory = require('../phone/PhoneFactory');
-const PhoneRepository = require('../phone/PhoneRepository');
-
-const knex = require('../config');
 
 class PhoneController {
 
     createPhone(req, res, next) {
-        const phoneFactory = new PhoneFactory;
-        const phone = phoneFactory.makeFromRequest(req.body);
-        const phoneRepository = new PhoneRepository(knex);
-        phoneRepository.create(phone).then(data => {
+       const phoneRepository = req.app.get('repo');
+        phoneRepository.create(req.phone).then(data => {
             res.send(data);
         }).catch(next);
     }
 
     showDb(req, res, next) {
-        const phoneFactory = new PhoneFactory;
-        const phone = phoneFactory.makeFromRequest(req.body);
-        const phoneRepository = new PhoneRepository(knex);
-        phoneRepository.show(phone).then(data => {
+        const phoneRepository = req.app.get('repo');
+        phoneRepository.show(req.phone).then(data => {
             res.send(data);
         }).catch(next);
     }
 
     updatePhone(req, res, next) {
-        const phoneFactory = new PhoneFactory;
-        const phone = phoneFactory.makeFromRequest(req.body);
-        phone.setId(req.params.id);
-        const phoneRepository = new PhoneRepository(knex);
-        phoneRepository.update(phone).then(data => {
+        req.phone.setId(req.params.id);
+        const phoneRepository = req.app.get('repo');
+        phoneRepository.update(req.phone).then(data => {
+            res.send(data);
+        }).catch(next);
+    }
+    deletePhone(req, res, next) {
+        req.phone.setId(req.params.id);
+        const phoneRepository = req.app.get('repo');
+        phoneRepository.delete(req.phone).then(data => {
             res.send(data);
         }).catch(next);
     }

@@ -35,5 +35,11 @@ class PhoneRepository {
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
+
+    delete(phone) {
+        return this.knex('phones').where({id: phone.getId()}).del()
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
 }
 module.exports = PhoneRepository;

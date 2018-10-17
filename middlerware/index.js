@@ -1,0 +1,1 @@
+exports.checkPhone = require('./phone-request');
