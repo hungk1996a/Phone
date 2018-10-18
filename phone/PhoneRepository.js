@@ -12,15 +12,15 @@ class PhoneRepository {
             color: phone.getColor(),
             price: phone.getPrice(),
             publisher: phone.getPublisher()
-        })
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        });
     }
 
-    show(phone) {
-        return this.knex.select().from('phones')
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+    show() {
+        return this.knex.select().from('phones');
+    }
+
+    detail(id) {
+        return this.knex.select().from('phones').where({id: id});
     }
 
     update(phone) {
@@ -31,15 +31,11 @@ class PhoneRepository {
             color: phone.getColor(),
             price: phone.getPrice(),
             publisher: phone.getPublisher()
-        })
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        });
     }
 
     delete(phone) {
-        return this.knex('phones').where({id: phone.getId()}).del()
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        return this.knex('phones').where({id: phone.getId()}).del();
     }
 }
 module.exports = PhoneRepository;

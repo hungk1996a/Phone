@@ -16,3 +16,11 @@ app.use(router);
 app.listen(3002, () =>{
     console.log('running');
 });
+
+
+// const nunjucks = require('nunjucks');
+// const PATH = '.';
+// nunjucks.configure(PATH, {
+//     autoescape: true,
+//     express: app
+// });

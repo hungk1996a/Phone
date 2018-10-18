@@ -6,7 +6,7 @@ const phoneController = new PhoneController();
 
 router.post('/', phoneRequest.checkPhone, phoneController.createPhone);
 
-router.get('/', phoneRequest.checkPhone, phoneController.showDb);
+router.get('/', phoneController.showPhone);
 
 router.put('/:id', phoneRequest.checkPhone, phoneController.updatePhone);
 

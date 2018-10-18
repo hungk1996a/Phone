@@ -9,9 +9,9 @@ class PhoneController {
         }).catch(next);
     }
 
-    showDb(req, res, next) {
+    showPhone(req, res, next) {
         const phoneRepository = req.app.get('repo');
-        phoneRepository.show(req.phone).then(data => {
+        phoneRepository.show().then(data => {
             res.send(data);
         }).catch(next);
     }
@@ -23,6 +23,7 @@ class PhoneController {
             res.send(data);
         }).catch(next);
     }
+
     deletePhone(req, res, next) {
         req.phone.setId(req.params.id);
         const phoneRepository = req.app.get('repo');
