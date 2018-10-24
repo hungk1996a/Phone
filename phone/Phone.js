@@ -13,27 +13,6 @@ class Phone {
         return this.id;
     }
 
-    setRam(ram) {
-        this.ram = ram;
-    }
-    getRam() {
-        return this.ram;
-    }
-
-    setStorage(storage) {
-        this.storage = storage;
-    }
-    getStorage() {
-        return this.storage;
-    }
-
-    setColor(color) {
-        this.color = color;
-    }
-    getColor() {
-        return this.color;
-    }
-
     setPrice(price) {
         this.price = price;
     }

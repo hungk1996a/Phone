@@ -1,13 +1,20 @@
 const Phone = require('./Phone');
-
+const Publisher = require('../Publisher/Publisher');
 class PhoneFactory {
     makeFromRequest(phoneRaw) {
         const phone = new Phone(phoneRaw.name);
-        phone.setRam(phoneRaw.ram);
-        phone.setStorage(phoneRaw.storage);
-        phone.setColor(phoneRaw.color);
         phone.setPrice(phoneRaw.price);
-        phone.setPublisher(phoneRaw.publisher);
+        phone.setPublisher(phoneRaw.publisher_id);
+        return phone;
+    }
+
+    makeFromDB(phoneRaw) {
+        const phone = new Phone(phoneRaw.name);
+        phone.setPrice(phoneRaw.price);
+        phone.setId(phoneRaw.id);
+        const publisher = new Publisher(phoneRaw.title);
+        publisher.setAddress(phoneRaw.address);
+        phone.setPublisher(publisher);
         return phone;
     }
 }

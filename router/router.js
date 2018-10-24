@@ -12,4 +12,6 @@ router.put('/:id', phoneRequest.checkPhone, phoneController.updatePhone);
 
 router.delete('/:id', phoneRequest.checkPhone, phoneController.deletePhone);
 
+router.get('/get', phoneController.joinDB);
+
 module.exports = router;

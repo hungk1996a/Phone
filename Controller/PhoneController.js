@@ -20,7 +20,7 @@ class PhoneController {
         req.phone.setId(req.params.id);
         const phoneRepository = req.app.get('repo');
         phoneRepository.update(req.phone).then(data => {
-            res.send(data);
+            res.send('success');
         }).catch(next);
     }
 
@@ -28,8 +28,14 @@ class PhoneController {
         req.phone.setId(req.params.id);
         const phoneRepository = req.app.get('repo');
         phoneRepository.delete(req.phone).then(data => {
-            res.send(data);
+            res.send('succes');
         }).catch(next);
+    }
+
+    joinDB(req, res, next) {
+        const phoneRepository = req.app.get('repo');
+        phoneRepository.join().then(data => res.send(data))
+            .catch(next);
     }
 }
 module.exports = PhoneController;
