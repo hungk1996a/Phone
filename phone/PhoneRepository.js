@@ -31,10 +31,10 @@ class PhoneRepository {
     }
 
     join() {
-        return this.knex.select('*').from('phones').innerJoin('publisher', function () {
-            this.on('publisher.id', '=', 'phones.publisher_id');
-        })
-            .then(data => data.map(element => { return phoneFactory.makeFromDB(element)}))
+        return this.knex.select("phones.id", "phones.publisher_id", "phones.name", "phones.price", "publisher.title",
+            "publisher.address")
+            .from('phones').leftJoin('publisher', 'phones.publisher_id', 'publisher.id')
+            .then(data => data.map(element => phoneFactory.makeFromDB(element)));
     }
 }
 module.exports = PhoneRepository;

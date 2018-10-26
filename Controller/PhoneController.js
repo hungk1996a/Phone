@@ -37,5 +37,11 @@ class PhoneController {
         phoneRepository.join().then(data => res.send(data))
             .catch(next);
     }
+
+    searchDB(req, res, next) {
+        req.app.get('factory').search(req.condition)
+            .then(data => res.send(data))
+            .catch(next);
+    }
 }
 module.exports = PhoneController;

@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
       table.increments('id');
       table.string('name');
       table.float('price');
-      table.integer('publisher_id')
+      table.integer('publisher_id');
+      table.date('undeleted_at')
     })
 };
 

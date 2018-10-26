@@ -14,6 +14,7 @@ class PhoneFactory {
         phone.setId(phoneRaw.id);
         const publisher = new Publisher(phoneRaw.title);
         publisher.setAddress(phoneRaw.address);
+        publisher.setId(phoneRaw.publisher_id);
         phone.setPublisher(publisher);
         return phone;
     }

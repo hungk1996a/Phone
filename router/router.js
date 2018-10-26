@@ -12,6 +12,9 @@ router.put('/:id', phoneRequest.checkPhone, phoneController.updatePhone);
 
 router.delete('/:id', phoneRequest.checkPhone, phoneController.deletePhone);
 
-router.get('/get', phoneController.joinDB);
+router.get('/phones', phoneRequest.checkSearch, phoneController.searchDB);
+router.get('/phone/:id', phoneRequest.checkSearch, phoneController.searchDB);
+router.get('/advance', phoneRequest.checkSearch, phoneController.searchDB);
+router.get('/basic', phoneRequest.checkSearch, phoneController.searchDB);
 
 module.exports = router;
